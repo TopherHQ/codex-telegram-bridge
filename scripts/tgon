@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+repo_dir="$(cd -- "$script_dir/.." && pwd)"
+
+has_cwd=0
+for arg in "$@"; do
+  if [[ "$arg" == "--cwd" ]]; then
+    has_cwd=1
+    break
+  fi
+done
+
+if [[ "$has_cwd" -eq 0 ]]; then
+  set -- "$@" --cwd "$PWD"
+fi
+
+exec node "$repo_dir/src/bridge.mjs" on "$@"

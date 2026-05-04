@@ -1,0 +1,11 @@
+.env
+.env.*
+!.env.example
+node_modules/
+coverage/
+.nyc_output/
+npm-debug.log*
+*.log
+state/
+dist/
+tmp/

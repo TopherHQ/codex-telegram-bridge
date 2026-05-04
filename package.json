@@ -1,0 +1,35 @@
+{
+  "name": "codex-telegram-bridge",
+  "version": "0.1.0",
+  "description": "Personal Telegram DM bridge for Codex App Server.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "bin": {
+    "codex-telegram-bridge": "src/bridge.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/topher/codex-telegram-bridge.git"
+  },
+  "scripts": {
+    "configure": "node src/bridge.mjs configure",
+    "on": "node src/bridge.mjs on",
+    "off": "node src/bridge.mjs off",
+    "status": "node src/bridge.mjs status",
+    "watch-on": "node src/bridge.mjs watch-on",
+    "watch-off": "node src/bridge.mjs watch-off",
+    "watch-status": "node src/bridge.mjs watch-status",
+    "start": "node src/bridge.mjs start",
+    "security-check": "node scripts/security-check.mjs",
+    "test": "node --test"
+  },
+  "keywords": [
+    "codex",
+    "telegram",
+    "json-rpc",
+    "app-server"
+  ]
+}
