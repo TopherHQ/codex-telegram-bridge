@@ -130,6 +130,24 @@ scripts/tgwatchoff
 
 If `scripts/tgon` is run without `--cwd`, it uses the current working directory.
 
+Optional shell helper:
+
+```bash
+agent-tg() {
+  local repo="$HOME/src/codex-telegram-bridge"
+  local workspace="$HOME/src/my-project"
+  local state_dir="${TELEGRAM_CODEX_STATE_DIR:-$HOME/.codex-telegram-bridge}"
+  cd "$repo" || return
+  scripts/tgwatchstatus --state-dir "$state_dir"
+  scripts/tgstatus --state-dir "$state_dir"
+  printf 'Start wake listener: scripts/tgwatch --cwd "%s" --state-dir "%s"\n' "$workspace" "$state_dir"
+  printf 'Start bridge: scripts/tgon --cwd "%s" --state-dir "%s"\n' "$workspace" "$state_dir"
+  env -u TELEGRAM_BOT_TOKEN -u TELEGRAM_CODEX_STATE_DIR codex "$@"
+}
+```
+
+Put the function in `~/.bashrc`, `~/.bash_aliases`, or your shell's equivalent startup file, then update `repo` and `workspace` for your machine. The `env -u` wrapper keeps bridge-specific Telegram environment variables out of the interactive Codex session.
+
 Pair your Telegram account:
 
 1. Send `/start` to the new Telegram bot.
