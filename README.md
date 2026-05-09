@@ -90,19 +90,19 @@ Keep the state directory on a filesystem that honors Unix file modes. WSL-mounte
 Start the bridge:
 
 ```bash
-node src/bridge.mjs start --cwd "/mnt/d/TOPHER HQ"
+node src/bridge.mjs start --cwd "/mnt/d/"
 ```
 
 To use the old V1 relay behavior:
 
 ```bash
-node src/bridge.mjs start --cwd "/mnt/d/TOPHER HQ" --mode relay
+node src/bridge.mjs start --cwd "/mnt/d/" --mode relay
 ```
 
 Or run it in the background and toggle it on/off:
 
 ```bash
-node src/bridge.mjs on --cwd "/mnt/d/TOPHER HQ"
+node src/bridge.mjs on --cwd "/mnt/d/"
 node src/bridge.mjs status
 node src/bridge.mjs off
 ```
@@ -112,7 +112,7 @@ node src/bridge.mjs off
 To let Telegram `/tgon` wake the bridge after `/tgoff`, start the lightweight wake listener:
 
 ```bash
-scripts/tgwatch --cwd "/mnt/d/TOPHER HQ"
+scripts/tgwatch --cwd "/mnt/d/"
 scripts/tgwatchstatus
 ```
 
@@ -122,7 +122,7 @@ While the full bridge is off, the wake listener handles `/tgon`, `/tgoff`, `/sta
 Convenience wrappers are also available:
 
 ```bash
-scripts/tgon --cwd "/mnt/d/TOPHER HQ"
+scripts/tgon --cwd "/mnt/d/"
 scripts/tgstatus
 scripts/tgoff
 scripts/tgwatchoff
@@ -163,7 +163,7 @@ After pairing, restart the bridge or send another message. Only the paired Teleg
 ## Demo Flow
 
 1. Run `node scripts/security-check.mjs`.
-2. Start the bridge with `node src/bridge.mjs start --cwd "/mnt/d/TOPHER HQ"`.
+2. Start the bridge with `node src/bridge.mjs start --cwd "/mnt/d/"`.
 3. In Telegram, send:
 
 ```text
